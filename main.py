@@ -15,36 +15,49 @@ def get_shape():
             print("Invalid option. Please try again.")
     return shape.lower()
 
+def ask_again():
+    while True:
+        ans = input("Would you like to calculate another shape? ")
+        if ans.lower() in ["yes","y"]:
+            break
+        elif ans.lower() in ["no","n"]:
+            print("Goodbye!")
+            quit()
+        else:
+            print("Invalid answer. Please try again.")
 
 print("This program calculates the area and perimeter of a shape of your choice.")
-shape = get_shape()
 
-if shape == "rectangle":
-    length = Dimension.get_length()
-    width = Dimension.get_width()
-    rectangle = Rectangle(length, width)
-    area = rectangle.get_area()
-    perimeter = rectangle.get_perimeter()
+while True:
+    shape = get_shape()
 
-elif shape == "square":
-    length = Dimension.get_length()
-    square = Square(length)
-    area = square.get_area()
-    perimeter = square.get_perimeter()
+    if shape == "rectangle":
+        length = Dimension.get_length()
+        width = Dimension.get_width()
+        rectangle = Rectangle(length, width)
+        area = rectangle.get_area()
+        perimeter = rectangle.get_perimeter()
 
-elif shape == "triangle":
-    side1 = Dimension.get_side1()
-    side2 = Dimension.get_side2()
-    side3 = Dimension.get_side3()
-    triangle = Triangle(side1, side2, side3)
-    area = triangle.get_area()
-    perimeter = triangle.get_perimeter()
+    elif shape == "square":
+        length = Dimension.get_length()
+        square = Square(length)
+        area = square.get_area()
+        perimeter = square.get_perimeter()
 
-elif shape == "circle":
-    radius = Dimension.get_radius()
-    circle = Circle(radius)
-    area = circle.get_area()
-    perimeter = circle.get_perimeter()
+    elif shape == "triangle":
+        side1 = Dimension.get_side1()
+        side2 = Dimension.get_side2()
+        side3 = Dimension.get_side3()
+        triangle = Triangle(side1, side2, side3)
+        area = triangle.get_area()
+        perimeter = triangle.get_perimeter()
 
-print(f"The area of the {shape} is: {round(area,2)}")
-print(f"The perimeter of the {shape} is: {round(perimeter,2)}")
+    elif shape == "circle":
+        radius = Dimension.get_radius()
+        circle = Circle(radius)
+        area = circle.get_area()
+        perimeter = circle.get_perimeter()
+
+    print(f"The area of the {shape} is: {round(area,2)}")
+    print(f"The perimeter of the {shape} is: {round(perimeter,2)}")
+    ask_again()
